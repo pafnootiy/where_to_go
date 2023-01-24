@@ -1,6 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-{% load static %}
 <head>
   <meta charset="utf-8">
   <title>Куда пойти — Москва глазами Артёма</title>
@@ -37,8 +37,14 @@
       color: red;
       width: 100px;
     }
+
   </style>
-  <script id="places-geojson" type="application/json">
+
+  {{ places | json_script:"places-geojson" }}
+
+  <!-- <script id="places-geojson" type="application/json">
+   
+   
     {
       "type": "FeatureCollection",
       "features": [
@@ -68,7 +74,7 @@
         }
       ]
     }
-  </script>
+  </script> -->
 
   <script id="app-template" type="text/template">
     <div v-bind:class="{'sidebar-content': 1, 'bg-white': selectedPlace, 'bg-secondary': !selectedPlace}">
