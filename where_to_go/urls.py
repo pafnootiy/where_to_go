@@ -23,6 +23,7 @@ from where_to_go import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index)
+    path('',views.index),
+    path('places/<int:pk>/', views.json_api)
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
