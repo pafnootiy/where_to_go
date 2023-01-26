@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Куда пойти — Москва глазами Артёма</title>
 
-  <link rel="shortcut icon" href="static/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="{% static 'favicon.png'%}"type="image/png">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -37,10 +37,9 @@
       color: red;
       width: 100px;
     }
-
   </style>
 
-  {{ places | json_script:"places-geojson" }}
+  {{ locations | json_script:"places-geojson" }}
 
   <!-- <script id="places-geojson" type="application/json">
    
@@ -88,14 +87,18 @@
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-
+    
       <div class="place-description" v-if="selectedPlace">
 
         <img v-if="mainPhotoSrc" v-bind:src="mainPhotoSrc" class="d-block shadow mb-3 rounded" v-bind:alt="selectedPlace.title">
+        <!-- {% verbatim %} -->
+        <h5 class="mb-3">{{selectedPlace.title}}</h5>
 
-        <h5 class="mb-3">{{ selectedPlace.title }}</h5>
+        <p>{{selectedPlace.short_description}}</p>
+        <!-- {% endverbatim %} -->
+        <!-- <h5 class="mb-3">{% verbatim %}{{ selectedPlace.title}}{% endverbatim %}</h5>
 
-        <p>{{ selectedPlace.short_description }}</p>
+        <p>{% verbatim %}{{selectedPlace.short_description }}{% endverbatim %}</p> -->
 
         <div id="place-photos" class="carousel slide mb-3 shadow" data-ride="carousel" data-interval="5000">
           <ol class="carousel-indicators">
@@ -195,7 +198,7 @@
     }
 
     let places = loadJSON('places-geojson');
-    log.debug('Load GeoJSON for places', places);
+    // log.debug('Load GeoJSON for places', places);
 
 
     L.geoJSON(places, {

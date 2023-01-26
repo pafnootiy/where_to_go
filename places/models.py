@@ -1,14 +1,15 @@
 from django.db import models
 
-# Create your models here.
+
 class Place(models.Model):
     title = models.CharField(verbose_name="Заголовок",max_length =50)
-    description_short=models.TextField(verbose_name="Описание короткое")
-    description_long = models.TextField(verbose_name="Описание полное")
+    short_description=models.TextField(verbose_name="Описание короткое",null=True)
+    long_description = models.TextField(verbose_name="Описание полное",null=True)
     longitude = models.FloatField(verbose_name="Долгота")
     latitude = models.FloatField(verbose_name="Широта")
     
     def __str__(self) :
+        
         return self.title
 
 class Image(models.Model):
@@ -16,10 +17,3 @@ class Image(models.Model):
                               related_name='images',blank=True,null=True)
     picture = models.ImageField(upload_to="media",verbose_name="Изображение",blank=True)
     position =models.PositiveIntegerField(unique=True,blank=True,null=True,verbose_name="Номер")
-
-    # def __str__(self) :
-    #     return self.place
-
-
-
-
