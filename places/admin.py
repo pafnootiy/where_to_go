@@ -1,19 +1,27 @@
 from django.contrib import admin
-
+from django.utils.safestring import mark_safe
+# from django.utils import mark_safe
+# django.utils.html.format_html() 
 # Register your models here.
 from .models import Place,Image
 
 class ImageInline(admin.TabularInline):
+
     model = Image
 
+    list_display = ("place","position","preview_image",)
 
-# class BooksInstanceInline(admin.TabularInline):
-#     model = BookInstance
+    readonly_fields = ("preview_image",)
+    def preview_image(self, obj):
+        return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+            url = obj.picture.url,
+            width="200",
+            height="120",
+            )
+        )
 
-# @admin.register(Book)
-# class BookAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'author', 'display_genre')
-#     inlines = [BooksInstanceInline]
+    preview_image.show_discription = "Картинка"
+
 
 
 @admin.register(Place)
@@ -22,18 +30,22 @@ class PlaceAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
 
 
-    # list_display = (
-    #     "title", "image", "pure_phonenumber",'description_short','description_long','latitude',
-    #     'longitude',)
-# admin.site.register(Place)
 
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
 
     list_display = ("place","position",)
+
+    # def preview_image(self, obj):
+    #     return mark_safe('<img src="{url}" width="{width}" height={height} />'.format(
+    #         url = obj.picture.url,
+    #         width="200",
+    #         height="200",
+    #         )
+    #     )
+
+
+
     
 
-class PlaceAdmin(admin.ModelAdmin):
-    list_display = ("title",)
-    inlines = [ImageInline]
