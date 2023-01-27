@@ -127,8 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
-# MEDIA_ROOT = os.path.join(BASE_DIR,'media') посмотреть возможно в модели надо убрать upload to 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media') посмотреть возможно в модели надо убрать upload to
 
 # STATIC_URL = os.getenv('STATIC_URL', '/static/')
 
@@ -139,7 +139,6 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 # STATIC_ROOT = os.getenv("STATIC_ROOT")
 
 # MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
-
 
 
 # STATICFILES_DIRS = [
@@ -153,4 +152,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 print('STATIC_URL', STATIC_URL)
 # print('STATICFILES_DIRS', STATICFILEDIRS)
-
