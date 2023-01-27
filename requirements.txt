@@ -3,3 +3,4 @@ Pillow==9.4.0
 autopep8==2.0.1
 django-admin-sortable2==2.1.4
 django-tinymce==3.5.0
+python-dotenv==0.21.1
