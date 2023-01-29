@@ -8,7 +8,6 @@ from django.urls import reverse
 
 def get_serialized_json(location):
     images = location.images.all()
-
     serialized_json = {
         "title": location.title,
         "imgs": [img.picture.url for img in images],
@@ -23,8 +22,7 @@ def get_serialized_json(location):
     return serialized_json
 
 
-def convert_in_json(location):
-
+def convert_into_json(location):
     serialized_location = {"type": "Feature",
                            "geometry": {
                                "type": "Point",
@@ -43,16 +41,16 @@ def convert_in_json(location):
 
 def json_api(request, pk):
     location = get_object_or_404(Place, id=pk)
-    return JsonResponse(get_serialized_json(location), safe=False, json_dumps_params={'ensure_ascii': False, "indent": 2})
+
+    return JsonResponse(get_serialized_json(location), safe=False, json_dumps_params={
+           'ensure_ascii': False, "indent": 2})
 
 
 def index(request):
     locations = Place.objects.all()
     context = {}
     for location in locations:
-
         context['locations'] = { 
             "type": "FeatureCollection",
-            "features": [convert_in_json(location) for location in locations]}
-    # print("what is in context ",context)
+            "features": [convert_into_json(location) for location in locations]}
     return render(request, 'index.html', context)

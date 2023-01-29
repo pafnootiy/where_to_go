@@ -16,7 +16,7 @@ load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
+ 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-1hf*&k#d%y4k8q6edv$2m2q)@ye7o3qd4r(35b^k^umyhm0b2*'
+ 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -128,27 +128,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# MEDIA_ROOT = os.path.join(BASE_DIR,'media') посмотреть возможно в модели надо убрать upload to
-
-# STATIC_URL = os.getenv('STATIC_URL', '/static/')
-
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
-
-# MEDIA_ROOT = os.getenv("MEDIA_ROOT", os.path.join(BASE_DIR, 'media'))
-
-# STATIC_ROOT = os.getenv("STATIC_ROOT")
-
-# MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
-
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-#     '/static/',
-# ]
+ 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-print('STATIC_URL', STATIC_URL)
-# print('STATICFILES_DIRS', STATICFILEDIRS)
