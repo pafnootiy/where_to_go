@@ -21,7 +21,7 @@
 
 Скачать репозиторий:
 
-git clone https://github.com/MargaritaPopova/where_to_go.git
+git clone https://github.com/pafnootiy/where_to_go.git
 Перейти в папку проекта:
 
 cd where_to_go
