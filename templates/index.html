@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <title>Куда пойти — Москва глазами Артёма</title>
 
-  <link rel="shortcut icon" href="{% static 'favicon.png'%}"type="image/png">
+  <link rel="shortcut icon" href="{% static 'favicon.png' %}"type="image/png">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-  <link rel="stylesheet" href="/static/leaflet-sidebar.css"/>
+  <link rel="stylesheet" href="{% static 'leaflet-sidebar.css' %}"/>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/@ansur/leaflet-pulse-icon@0.1.1/dist/L.Icon.Pulse.css">
@@ -41,44 +41,12 @@
 
   {{ locations | json_script:"places-geojson" }}
 
-  <!-- <script id="places-geojson" type="application/json">
-   
-   
-    {
-      "type": "FeatureCollection",
-      "features": [
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [37.62, 55.793676]
-          },
-          "properties": {
-            "title": "«Легенды Москвы",
-            "placeId": "moscow_legends",
-            "detailsUrl": "./static/places/moscow_legends.json"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [37.64, 55.753676]
-          },
-          "properties": {
-            "title": "Крыши24.рф",
-            "placeId": "roofs24",
-            "detailsUrl": "./static/places/roofs24.json"
-          }
-        }
-      ]
-    }
-  </script> -->
+
 
   <script id="app-template" type="text/template">
     <div v-bind:class="{'sidebar-content': 1, 'bg-white': selectedPlace, 'bg-secondary': !selectedPlace}">
       <div v-if="promptVisible" class="d-flex flex-column justify-content-center align-items-center" style="height: 100%;">
-        <img class="d-block select-place-prompt mb-4" src="static/hand-pointer-regular.svg" alt="Select place">
+        <img class="d-block select-place-prompt mb-4" src="{% static 'hand-pointer-regular.svg' alt='Select place'}">
         <h4>Выберите место на карте</h4>
       </div>
 
@@ -93,13 +61,13 @@
         <img v-if="mainPhotoSrc" v-bind:src="mainPhotoSrc" class="d-block shadow mb-3 rounded" v-bind:alt="selectedPlace.title">
         
         <h5 class="mb-3">{{selectedPlace.title}}</h5>
-        <!-- {% verbatim %} -->
+    
         <p>{{selectedPlace.short_description}}</p>
       
         <h5 class="mb-3"> {{ selectedPlace.title}} </h5>
 
         <p> {{selectedPlace.short_description }} </p>
-        <!-- {% endverbatim %} -->
+   
         <div id="place-photos" class="carousel slide mb-3 shadow" data-ride="carousel" data-interval="5000">
           <ol class="carousel-indicators">
             <template v-for="(img, index) in carouselImgs" :key="img">
@@ -149,7 +117,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@ansur/leaflet-pulse-icon@0.1.1/dist/L.Icon.Pulse.js"></script>
 
-  <script src="static/leaflet-sidebar.js"></script>
+  <script src="{% static 'leaflet-sidebar.js' %}"></script>
 
   <script>
     var map = L.map('map');
@@ -198,7 +166,7 @@
     }
 
     let places = loadJSON('places-geojson');
-    // log.debug('Load GeoJSON for places', places);
+    log.debug('Load GeoJSON for places', places);
 
 
     L.geoJSON(places, {
