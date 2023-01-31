@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'places.apps.PlacesConfig',
     'adminsortable2',
-    'tinymce'
+    'tinymce',
+    # 'load_place.py'
 ]
 
 MIDDLEWARE = [
@@ -127,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, )
 # MEDIA_ROOT = os.path.join(BASE_DIR,'media') посмотреть возможно в модели надо убрать upload to
 
 # STATIC_URL = os.getenv('STATIC_URL', '/static/')
@@ -150,5 +151,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-print('STATIC_URL', STATIC_URL)
+# print('STATIC_URL', STATIC_URL)
 # print('STATICFILES_DIRS', STATICFILEDIRS)

@@ -26,7 +26,7 @@ def convert_into_json(location):
     serialized_location = {"type": "Feature",
                            "geometry": {
                                "type": "Point",
-                               "coordinates": [location.latitude, location.longitude]
+                               "coordinates": [location.longitude, location.latitude]
                            },
                            "properties": {
                                "title": location.title,
