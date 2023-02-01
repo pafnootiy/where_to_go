@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 # Register your models here.
 from .models import Place,Image
 from adminsortable2.admin import SortableAdminMixin
-from adminsortable2.admin import SortableStackedInline
+# from adminsortable2.admin import SortableStackedInline
 from adminsortable2.admin import SortableAdminBase
 from adminsortable2.admin import SortableTabularInline
 
