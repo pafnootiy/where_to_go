@@ -7,9 +7,9 @@
 
  
 # Общая информация
-Проект доступен по ссылке: https://kudago.pythonanywhere.com
+Проект доступен по ссылке: https://pafnootiy.pythonanywhere.com
 
-Панель администратора: https://kudago.pythonanywhere.com/admin
+Панель администратора: https://pafnootiy.pythonanywhere.com/admin
 
 
 Это код первого урока в курсе по Python и веб-разработке на сайте Devman
@@ -22,6 +22,7 @@
 Скачать репозиторий:
 
 git clone https://github.com/pafnootiy/where_to_go.git
+
 Перейти в папку проекта:
 
 cd where_to_go
