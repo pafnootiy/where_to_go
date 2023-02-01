@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'pafnootiy.pythonanywhere.com']
 
@@ -128,22 +128,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, )
-# MEDIA_ROOT = os.path.join(BASE_DIR,'media') посмотреть возможно в модели надо убрать upload to
-
-# STATIC_URL = os.getenv('STATIC_URL', '/static/')
-
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
-
-# MEDIA_ROOT = os.getenv("MEDIA_ROOT", os.path.join(BASE_DIR, 'media'))
-
-# STATIC_ROOT = os.getenv("STATIC_ROOT")
-
-# MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+ 
+MEDIA_ROOT = os.path.join(BASE_DIR,)
+ 
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR,  )
     
 ]
 
