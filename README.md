@@ -27,8 +27,8 @@ git clone https://github.com/pafnootiy/where_to_go.git
 
 cd where_to_go
 Создать и активировать виртуальное окружение удобным для вас способом:
+например, через virtualenv
 
-# например, через virtualenv
 python3 -m venv <your-venv-name>
 
 source <your-venv-name>/bin/activate
