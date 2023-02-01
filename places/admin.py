@@ -1,14 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-# from django.utils import mark_safe
-# django.utils.html.format_html() 
-# Register your models here.
+ 
 from .models import Place,Image
 from adminsortable2.admin import SortableAdminMixin
-# from adminsortable2.admin import SortableStackedInline
+ 
 from adminsortable2.admin import SortableAdminBase
 from adminsortable2.admin import SortableTabularInline
-
+ 
 
 class ImageInline(SortableTabularInline):
 
