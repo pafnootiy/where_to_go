@@ -154,6 +154,7 @@ temple_files/
 .idea/
 media/
 !.env.template/.env
-.gitbook/assets/
-places/
-.editorconfig
+static/.gitbook/assets/
+static/places/
+static/.editorconfig
+static/
