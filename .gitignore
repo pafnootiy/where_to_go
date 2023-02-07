@@ -158,3 +158,4 @@ static/.gitbook/assets/
 static/places/
 static/.editorconfig
 # static/
+.vscode/
