@@ -9,8 +9,7 @@ from where_to_go import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
-    path('places/<int:pk>/', views.json_api,name='location_info'),
+    path('', views.index),
+    path('places/<int:pk>/', views.json_api, name='location_info'),
     path('tinymce/', include('tinymce.urls'))
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

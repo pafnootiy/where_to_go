@@ -1,6 +1,5 @@
 django 
 Pillow 
-autopep8 
 django-admin-sortable2 
 django-tinymce 
 python-dotenv 
