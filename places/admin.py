@@ -10,26 +10,26 @@ from .models import Place, Image
 class ImageInline(SortableTabularInline):
     model = Image
     extra = 1
-    list_display = ("preview_image", "place", "position",)
+    list_display = ('preview_image', 'place', 'position',)
 
-    readonly_fields = ("preview_image",)
+    readonly_fields = ('preview_image',)
 
     def preview_image(self, obj):
         return mark_safe(
             '<img src="{url}" width="{width}" height={height} />'.format(
                 url=obj.picture.url,
-                width="200",
-                height="120",
+                width='200',
+                height='120',
             )
         )
 
 
 @admin.register(Place)
 class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
-    list_display = ("title",)
+    list_display = ('title',)
     inlines = [ImageInline]
 
 
 @admin.register(Image)
 class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ("position", "place",)
+    list_display = ('position', 'place',)
