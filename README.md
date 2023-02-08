@@ -26,6 +26,13 @@ pip install -r requirements.txt
 ```
 
 Создайте .env файл по шаблону в папке .env.template и заполните вашими данными,без кавычек.
+```sh
+SECRET_KEY=fill-this-string-with-your-your-secret-key-!
+localhost=127.0.0.1
+DEBUG=True
+
+```
+
 
 Проведите миграции
 
