@@ -17,9 +17,12 @@ class Image(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE,
                               verbose_name='Локация',
                               related_name='images', blank=True, null=True)
-    picture = models.ImageField(verbose_name='Изображение', blank=True,
-                                null=True)
+    picture = models.ImageField(verbose_name='Изображение')
     position = models.PositiveIntegerField(default=0)
+
 
     class Meta:
         ordering = ['position']
+
+    def __str__(self):
+        return self.place.title

@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
-ALLOWED_HOSTS = env.list('localhost', 'pythonanywhere_host')
+ALLOWED_HOSTS = env.list('localhost')
 
 # Application definition
 
@@ -112,7 +112,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-STATIC_ROOT1 = env.path(BASE_DIR, 'assets')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

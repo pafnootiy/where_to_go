@@ -6,7 +6,7 @@ from django.urls import reverse
 from places.models import Place
 
 
-def get_serialized_json(location):
+def get_details_for_url_field(location):
     images = location.images.all()
     serialized_json = {
         'title': location.title,
@@ -22,38 +22,32 @@ def get_serialized_json(location):
     return serialized_json
 
 
-def convert_into_json(location):
-    serialized_location = {'type': 'Feature',
-                           'geometry': {
-                               'type': 'Point',
-                               'coordinates': [location.longitude,
-                                               location.latitude]
-                           },
-                           'properties': {
-                               'title': location.title,
-                               'placeId': location.id,
-                               'detailsUrl': reverse('location_info', kwargs={
-                                   'pk': location.id})
-                           }
-                           }
+def  convert_location_to_geojson(location):
+    serialized_location = {'type': 'Feature', 'geometry': {'type': 'Point',
+                                                           'coordinates': [
+                                                               location.longitude,
+                                                               location.latitude]},
+                           'properties': {'title': location.title,
+                                          'detailsUrl': reverse(
+                                              'location_info',
+                                              kwargs={'pk': location.id})}}
 
     return serialized_location
 
 
-def json_api(request, pk):
+def get_response(request, pk):
     location = get_object_or_404(Place, id=pk)
 
-    return JsonResponse(get_serialized_json(location), safe=False,
-                        json_dumps_params={
-                            'ensure_ascii': False, 'indent': 2})
+    return JsonResponse(get_details_for_url_field(location),
+                        json_dumps_params={'ensure_ascii': False})
 
 
 def index(request):
     locations = Place.objects.all()
     context = {}
     for location in locations:
-        context['locations'] = {
-            'type': 'FeatureCollection',
-            'features': [convert_into_json(location) for location in
-                         locations]}
+        context = {'locations': {'type': 'FeatureCollection',
+                                 'features': [
+                                     convert_location_to_geojson(location) for
+                                     location in locations]}}
     return render(request, 'index.html', context)
