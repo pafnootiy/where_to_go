@@ -25,6 +25,15 @@
 pip install -r requirements.txt
 ```
 
+Создайте .env файл по шаблону в папке .env.template и заполните вашими данными,без кавычек.
+```sh
+SECRET_KEY=fill-this-string-with-your-your-secret-key-!
+localhost=127.0.0.1
+DEBUG=True
+
+```
+
+
 Проведите миграции
 
 ```shell
@@ -38,10 +47,6 @@ python3 manage.py runserver
 ```
 
 Перейдите на сайт по адресу [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
-## Переменные окружения
-
-Создайте .env файл по шаблону .env.template и заполните вашими данными,без кавычек.
 
 ## Заполняем базу данных тестовыми данными
 
