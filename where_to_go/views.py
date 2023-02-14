@@ -22,16 +22,16 @@ def get_details_for_url_field(location):
     return serialized_json
 
 
-def  convert_location_to_geojson(location):
-    serialized_location = {'type': 'Feature', 'geometry': {'type': 'Point',
-                                                           'coordinates': [
-                                                               location.longitude,
-                                                               location.latitude]},
+def convert_location_to_geojson(location):
+    serialized_location = {'type': 'Feature',
+                           'geometry': {'type': 'Point',
+                                        'coordinates': [location.longitude,
+                                                        location.latitude]},
                            'properties': {'title': location.title,
                                           'detailsUrl': reverse(
                                               'location_info',
                                               kwargs={'pk': location.id})}}
-
+    
     return serialized_location
 
 

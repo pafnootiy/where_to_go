@@ -20,7 +20,6 @@ class Image(models.Model):
     picture = models.ImageField(verbose_name='Изображение')
     position = models.PositiveIntegerField(default=0)
 
-
     class Meta:
         ordering = ['position']
 
