@@ -15,10 +15,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
-# ALLOWED_HOSTS = env.list('localhost', '*.pythonanywhere.com')
-localhost = env.str('localhost')
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [localhost, '*.pythonanywhere.com'])
-print(ALLOWED_HOSTS)
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [
+                "localhost", '*.pythonanywhere.com'])
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',

@@ -31,7 +31,6 @@ def convert_location_to_geojson(location):
                                           'detailsUrl': reverse(
                                               'location_info',
                                               kwargs={'pk': location.id})}}
-    
     return serialized_location
 
 
