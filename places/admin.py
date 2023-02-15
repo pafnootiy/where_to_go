@@ -32,4 +32,4 @@ class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('position', 'place',)
+    list_display = ('position', 'place', 'pk',)
