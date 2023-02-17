@@ -37,8 +37,9 @@ def add_place(url):
 
         if created_image:
             print(f'Добавляю фото {os.path.basename(picture_url)}')
-            image.picture.save(os.path.basename(picture_url), picture,
-                               save=True)
+            image.picture.save(
+                os.path.basename(picture_url), picture, save=True
+            )
         else:
             print(f'Фото {os.path.basename(picture_url)} уже существует')
 

@@ -23,29 +23,39 @@ def get_details_for_url_field(location):
 
 
 def convert_location_to_geojson(location):
-    serialized_location = {'type': 'Feature',
-                           'geometry': {'type': 'Point',
-                                        'coordinates': [location.longitude,
-                                                        location.latitude]},
-                           'properties': {'title': location.title,
-                                          'detailsUrl': reverse(
-                                              'location_info',
-                                              kwargs={'pk': location.id})}}
+    serialized_location = {
+        'type': 'Feature',
+        'geometry': {
+            'type': 'Point',
+            'coordinates': [location.longitude, location.latitude]
+        },
+        'properties': {
+            'title': location.title,
+            'detailsUrl': reverse(
+                'location_info', kwargs={'pk': location.id})
+        }
+    }
+
     return serialized_location
 
 
 def get_response(request, pk):
     location = get_object_or_404(Place, id=pk)
 
-    return JsonResponse(get_details_for_url_field(location),
-                        json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(
+        get_details_for_url_field(location),
+        json_dumps_params={'ensure_ascii': False}
+    )
 
 
 def index(request):
     locations = Place.objects.all()
-    context = {}
-    context = {'locations': {'type': 'FeatureCollection',
-                             'features': [
-                                 convert_location_to_geojson(location) for
-                                 location in locations]}}
+    context = {
+        'locations': {
+            'type': 'FeatureCollection', 'features': [
+                convert_location_to_geojson(location) for location in locations
+            ]
+        }
+    }
+
     return render(request, 'index.html', context)

@@ -28,8 +28,4 @@ class Image(models.Model):
         ordering = ['position']
 
     def __str__(self):
-        return "Фото для локации {title}  / img_{num}".format(
-            title=self.place.title, num=self.pk)
-
-    def __str__(self):
-        return f"Фото для локации {self.place.title}  / img_{self.pk}"
+        return f'Фото для локации {self.place.title}  / img_{self.pk}'
