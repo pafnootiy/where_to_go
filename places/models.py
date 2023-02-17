@@ -14,9 +14,13 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    place = models.ForeignKey(Place, on_delete=models.CASCADE,
-                              verbose_name='Локация',
-                              related_name='images', blank=True, null=True)
+    place = models.ForeignKey(
+        Place, on_delete=models.CASCADE,
+        verbose_name='Локация',
+        related_name='images',
+        blank=True,
+        null=True
+    )
     picture = models.ImageField(verbose_name='Изображение')
     position = models.PositiveIntegerField(default=0)
 
@@ -25,4 +29,7 @@ class Image(models.Model):
 
     def __str__(self):
         return "Фото для локации {title}  / img_{num}".format(
-                title=self.place.title, num=self.pk)
+            title=self.place.title, num=self.pk)
+
+    def __str__(self):
+        return f"Фото для локации {self.place.title}  / img_{self.pk}"

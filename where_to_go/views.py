@@ -44,9 +44,8 @@ def get_response(request, pk):
 def index(request):
     locations = Place.objects.all()
     context = {}
-    for location in locations:
-        context = {'locations': {'type': 'FeatureCollection',
-                                 'features': [
-                                     convert_location_to_geojson(location) for
-                                     location in locations]}}
+    context = {'locations': {'type': 'FeatureCollection',
+                             'features': [
+                                 convert_location_to_geojson(location) for
+                                 location in locations]}}
     return render(request, 'index.html', context)
