@@ -6,7 +6,7 @@ from django.urls import reverse
 from places.models import Place
 
 
-def get_details_for_url_field(location):
+def serialize_info_for_location(location):
     images = location.images.all()
     serialized_json = {
         'title': location.title,
@@ -39,11 +39,11 @@ def convert_location_to_geojson(location):
     return serialized_location
 
 
-def get_response(request, pk):
+def add_information_for_location(request, pk):
     location = get_object_or_404(Place, id=pk)
 
     return JsonResponse(
-        get_details_for_url_field(location),
+        serialize_info_for_location(location),
         json_dumps_params={'ensure_ascii': False}
     )
 
