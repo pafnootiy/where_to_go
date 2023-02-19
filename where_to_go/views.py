@@ -27,13 +27,15 @@ def convert_location_to_geojson(location):
         'type': 'Feature',
         'geometry': {
             'type': 'Point',
-            'coordinates': [location.longitude, location.latitude]
+            'coordinates': [location.longitude, location.latitude],
         },
         'properties': {
             'title': location.title,
             'detailsUrl': reverse(
-                'location_info', kwargs={'pk': location.id})
-        }
+                'location_info',
+                kwargs={'pk': location.id},
+            ),
+        },
     }
 
     return serialized_location
@@ -44,7 +46,7 @@ def add_information_for_location(request, pk):
 
     return JsonResponse(
         serialize_info_for_location(location),
-        json_dumps_params={'ensure_ascii': False}
+        json_dumps_params={'ensure_ascii': False},
     )
 
 
